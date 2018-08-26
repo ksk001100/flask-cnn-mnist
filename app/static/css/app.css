@@ -1,0 +1,26 @@
+.canvas {
+    border: solid 1px black;
+    width: 280px;
+    height: 280px;
+}
+
+.clear-button {
+    width: 100px;
+    height: 30px;
+    background-color: red;
+    color: white;
+    margin: 5px 0;
+}
+
+.send-button {
+    width: 100px;
+    height: 30px;
+    background-color: green;
+    color: white;
+    margin: 5px 0;
+}
+
+.answer {
+    color: red;
+    font-size: 20px;
+}
