@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>canvas tutorial</title>
+    <title>Flask+Kerasテスト</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="/static/js/app.js"></script>
     <link rel="stylesheet" href="/static/css/app.css">
@@ -14,13 +14,9 @@
       </div>
       <form action="/" method="post">
           <button type="button" onClick="clearCan();" value="クリア" class="clear-button">クリア</button>
-          <button type="submit" id="img" name="img" onClick="saveImg();" value="認識" class="send-button">認識</button>
+          <button type="button" id="img" name="img" onClick="sendImage();" value="認識" class="send-button">認識</button>
       </form>
-      <div>
-        {% if ans != None %}
-          答えは<span class="answer">{{ ans }}</span>です
-        {% endif %}
-      </div>
+      <div id="answer"></div>
     </div>
   </body>
 </html>

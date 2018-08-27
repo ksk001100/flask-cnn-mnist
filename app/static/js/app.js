@@ -74,25 +74,17 @@ function check(){
     document.body.onload=check;
 }
 
-function saveImg() {
-    var img = document.getElementById("can").toDataURL('image/png');
-    img = img.replace('image/png', 'image/octet-stream');
-    document.getElementById("img").value = img;
-}
-
 function sendImage() {
     var img = document.getElementById("can").toDataURL('image/png');
     img = img.replace('image/png', 'image/octet-stream');
     $.ajax({
         type: "POST",
-        url: "localhost:5555/",
+        url: "http://localhost:3000",
         data: {
             "img": img
-        },
-        success: function(j_data){
-
-            console.log('hoge')
-
         }
+    })
+    .done( (data) => {
+        $('#answer').html('答えは<span class="answer">'+data['ans']+'</span>です')
     });
 }
