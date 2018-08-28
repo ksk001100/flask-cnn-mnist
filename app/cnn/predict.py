@@ -9,4 +9,4 @@ def result(x):
     x = np.expand_dims(x, axis=0)
     x = x.reshape(x.shape[0],28,28,1)
     r = np.argmax(model.predict(x))
-    return r
+    return int(r)

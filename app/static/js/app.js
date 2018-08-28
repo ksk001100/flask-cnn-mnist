@@ -12,7 +12,7 @@ function mam_draw_init() {
     can.addEventListener("mouseup", onMouseUp, false);
     ct = can.getContext("2d");
     ct.strokeStyle = "#000000";
-    ct.lineWidth = 20;
+    ct.lineWidth = 15;
     ct.lineJoin = "round";
     ct.lineCap = "round";
     clearCan();
@@ -66,20 +66,12 @@ function clearCan() {
     ct.fillRect(0, 0, can.getBoundingClientRect().width, can.getBoundingClientRect().height);
 }
 
-function check(){
-    var strName;
-    strName = document.getElementById("test").textContent;
-    strName = strName.replace("/[\n\r]/g", "<br>");
-    test.innerHTML = strName;
-    document.body.onload=check;
-}
-
 function sendImage() {
     var img = document.getElementById("can").toDataURL('image/png');
     img = img.replace('image/png', 'image/octet-stream');
     $.ajax({
         type: "POST",
-        url: "http://localhost:3000",
+        url: "http://localhost:5000",
         data: {
             "img": img
         }

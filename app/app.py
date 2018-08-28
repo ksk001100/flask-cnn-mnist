@@ -1,24 +1,24 @@
-from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS
-from cnn import predict
+from datetime import datetime
 import cv2
 import re
 import base64
+from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import numpy as np
-from datetime import datetime
+from cnn import predict
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/', methods=['GET'])
-def get():
-    return render_template('index.html')
-
-@app.route('/', methods=['POST'])
-def post():
-    ans = get_answer(request)
-    return jsonify({'ans': int(ans)})
-
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    print(request.method)
+    if request.method == 'POST':
+        ans = get_answer(request)
+        return jsonify({'ans': ans})
+    else:
+        return render_template('index.html')
+    
 def get_answer(req):
     img_str = re.search(r'base64,(.*)', req.form['img']).group(1)
     nparr = np.fromstring(base64.b64decode(img_str), np.uint8)
@@ -31,4 +31,4 @@ def get_answer(req):
     return ans
 
 if __name__ == "__main__":
-    app.run(port=3000)
+    app.run()
